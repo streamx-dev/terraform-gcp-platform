@@ -15,7 +15,7 @@
 
 output "global_ip" {
   description = "Allocated IP for future usage"
-  value       = google_compute_global_address.global_ip.address
+  value       = google_compute_address.global_ip.address
 }
 
 output "nodes_subnet_id" {

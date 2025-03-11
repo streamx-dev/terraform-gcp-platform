@@ -18,8 +18,9 @@ resource "google_compute_subnetwork" "subnet" {
 ########################################################################################
 #     Allocate Global IP
 ########################################################################################
-resource "google_compute_global_address" "global_ip" {
+resource "google_compute_address" "global_ip" {
   project             = var.gcp_project_id
   name = "global-ip"
+  region = var.cloud_region
 }
 
