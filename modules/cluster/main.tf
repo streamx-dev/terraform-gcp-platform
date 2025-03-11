@@ -26,7 +26,7 @@ resource "google_container_cluster" "cluster" {
 }
 
 resource "google_container_node_pool" "node_pool" {
-  name               = "streamx"
+  name               = var.node_pool_name
   project            = var.gcp_project_id
   cluster            = google_container_cluster.cluster.id
   initial_node_count = 1
@@ -47,7 +47,7 @@ resource "google_container_node_pool" "node_pool" {
       "https://www.googleapis.com/auth/devstorage.read_only"
     ]
 
-    disk_size_gb = 200
+    disk_size_gb = var.node_pool_disk_size
     disk_type    = "pd-ssd"
     machine_type = "e2-standard-4"
   }

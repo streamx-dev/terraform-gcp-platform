@@ -23,6 +23,12 @@ variable "gcp_cluster_name" {
   type        = string
 }
 
+variable "node_pool_name" {
+  default = "streamx"
+  description = "The name node_pool for kubernetes cluster."
+  type        = string
+}
+
 variable "gcp_cluster_location" {
   default     = "europe-central2-a"
   description = "A valid GCP location (region or zone) in which the kubernetes cluster will be available."
@@ -31,11 +37,18 @@ variable "gcp_cluster_location" {
 
 variable "vpc_network_link" {
   default = null
+  description = ""
   type = string
 }
 
 variable "subnet_link" {
   default = null
+  description = ""
   type = string
 }
 
+variable "node_pool_disk_size" {
+  default = 200
+  description = ""
+  type = number
+}

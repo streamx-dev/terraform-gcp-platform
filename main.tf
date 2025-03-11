@@ -21,4 +21,6 @@ module "cluster" {
   gcp_cluster_location = var.gcp_cluster_location
   vpc_network_link = var.vpc_network_link
   subnet_link = var.subnet_link
+  node_pool_name = var.node_pool_name
+  node_pool_disk_size = var.node_pool_disk_size
 }

@@ -13,7 +13,6 @@
 # limitations under the License.
 #
 
-
 resource "google_storage_bucket" "bucket" {
   name          = var.bucket_name
   force_destroy = false
