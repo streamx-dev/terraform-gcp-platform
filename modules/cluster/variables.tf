@@ -1,11 +1,9 @@
 variable gcp_project_id {
-  default = "sonic-airfoil-452813-g1"
   description = "ID of project on GCP where the cluster is created"
   type        = string
 }
 
 variable "gcp_cluster_name" {
-  default     = "streamx"
   description = "The name of the kubernetes cluster."
   type        = string
 }
@@ -17,12 +15,12 @@ variable "gcp_cluster_location" {
 }
 
 variable "vpc_network_link" {
-  default ="https://www.googleapis.com/compute/v1/projects/sonic-airfoil-452813-g1/global/networks/streamx-network"
+  description = ""
   type = string
 }
 
 variable "subnet_link" {
-  default = "https://www.googleapis.com/compute/v1/projects/sonic-airfoil-452813-g1/regions/europe-central2/subnetworks/streamx-subnet"
+  description = ""
   type = string
 }
 
