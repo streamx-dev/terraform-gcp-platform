@@ -40,3 +40,8 @@ variable "bucket_storage_class" {
   default = "STANDARD"
   type = string
 }
+
+variable "bucket_force_destroy" {
+  default = false
+  type = bool
+}

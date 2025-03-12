@@ -19,7 +19,7 @@
 
 resource "google_storage_bucket" "bucket" {
   name          = var.bucket_name
-  force_destroy = false
+  force_destroy = var.bucket_force_destroy
   location      = var.region
   storage_class = var.bucket_storage_class
   project       = var.gcp_project_id
