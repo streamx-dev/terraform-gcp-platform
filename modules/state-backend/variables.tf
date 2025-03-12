@@ -13,13 +13,14 @@
 # limitations under the License.
 #
 
-
 variable "bucket_name" {
+  description = "(Optional, default: 'streamx_bucket') The name of the bucket."
   default = "streamx_bucket"
   type = string
 }
 
 variable "region" {
+  description = "(Optional, default: 'EUROPE-CENTRAL2') The GCS location https://cloud.google.com/storage/docs/locations"
   default = "EUROPE-CENTRAL2"
   type = string
 }

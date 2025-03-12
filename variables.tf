@@ -50,18 +50,18 @@ variable "subnet_link" {
 
 variable "node_pool_disk_size" {
   default = 200
-  description = "(Optional) Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB"
+  description = "(Optional, default 200) Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB"
   type = number
 }
 
 variable "node_pool_autoscaling_min_node_count" {
   default = 1
-  description = "(Optional) Minimum number of nodes in the NodePool. Must be >=0 and <= node_pool_autoscaling_min_node_count. Default value 1."
+  description = "(Optional, default 1) Minimum number of nodes in the NodePool. Must be >=0 and <= node_pool_autoscaling_min_node_count. Default value 1."
   type = number
 }
 
 variable "node_pool_autoscaling_max_node_count" {
   default = 10
-  description = "(Optional) Maximum number of nodes in the NodePool. Must be >= min_node_count. Default value 10."
+  description = "(Optional, default 10) Maximum number of nodes in the NodePool. Must be >= min_node_count. Default value 10."
   type = number
 }
