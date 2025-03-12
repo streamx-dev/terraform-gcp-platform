@@ -21,7 +21,7 @@ resource "google_storage_bucket" "bucket" {
   name          = var.bucket_name
   force_destroy = false
   location      = var.region
-  storage_class = "STANDARD"
+  storage_class = var.bucket_storage_class
   project       = var.gcp_project_id
   versioning {
     enabled = var.bucket_versioning_enabled

@@ -33,3 +33,9 @@ variable "tf_backends" {
   description = "Terraform backends defined as map where key is state backend prefix and value is a path where backend configuration is created."
   type        = map(string)
 }
+
+variable "bucket_storage_class" {
+  description = "(Optional, Default: 'STANDARD') The Storage Class of the new bucket. Supported values include: STANDARD, MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE."
+  default = "STANDARD"
+  type = string
+}
