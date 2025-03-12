@@ -14,7 +14,7 @@
 #
 
 variable "bucket_name" {
-  default = "streamx_bucket_test_2"
+  default = "terraform_state_streamx_bucket"
   type = string
 }
 
@@ -24,7 +24,6 @@ variable "region" {
 }
 
 variable gcp_project_id {
-  default = "sonic-airfoil-452813-g1"
   description = "ID of project on GCP where the cluster is created"
   type        = string
 }

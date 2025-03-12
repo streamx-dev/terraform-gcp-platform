@@ -25,7 +25,6 @@ variable "region" {
 }
 
 variable gcp_project_id {
-  default = "sonic-airfoil-452813-g1"
   description = "ID of project on GCP where the cluster is created"
   type        = string
 }
