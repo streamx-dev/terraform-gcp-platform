@@ -23,6 +23,7 @@ resource "google_storage_bucket" "bucket" {
     enabled = true
   }
 }
+
 locals {
   terraform_state_backend_config = tomap({
     for key, tf_backend_path in var.tf_backends : key =>
