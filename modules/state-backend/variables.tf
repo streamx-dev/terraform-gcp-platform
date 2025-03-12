@@ -25,7 +25,7 @@ variable "region" {
 }
 
 variable gcp_project_id {
-  description = "ID of project on GCP where the cluster is created"
+  description = "This string variable represents the unique ID of your Google Cloud Platform (GCP) project. GCP uses this ID to identify your project in its system."
   type        = string
 }
 

@@ -13,18 +13,18 @@
 # limitations under the License.
 #
 
-output "global_ip" {
-  description = "Allocated IP for future usage"
-  value       = google_compute_address.global_ip.address
+output "allocated_ip" {
+  description = "This output represents the IP address that you've allocated for future use. This IP address is unique globally within your GCP project."
+  value       = google_compute_address.ip_address.address
 }
 
 output "nodes_subnet_id" {
-  description = "Nodes subnet ID"
+  description = "This output is the unique self_link of the subnet where the nodes of the GKE cluster will be located. This link can be used to reference the subnet in other Google Cloud resources."
   value       = google_compute_subnetwork.subnet.self_link
 }
 
 output "network_id" {
-  description = "Network id to attach cluster"
+  description = "This output is the unique self_link of the VPC network you've created. This link can be used to reference the network in other Google Cloud resources."
   value       = google_compute_network.vpc_network.self_link
 }
 

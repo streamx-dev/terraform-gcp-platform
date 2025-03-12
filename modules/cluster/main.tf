@@ -29,11 +29,11 @@ resource "google_container_node_pool" "node_pool" {
   name               = var.node_pool_name
   project            = var.gcp_project_id
   cluster            = google_container_cluster.cluster.id
-  initial_node_count = 1
+  initial_node_count = var.node_pool_autoscaling_min_node_count
 
   autoscaling {
-    min_node_count = 1
-    max_node_count = 10
+    min_node_count = var.node_pool_autoscaling_min_node_count
+    max_node_count = var.node_pool_autoscaling_max_node_count
   }
 
   node_config {

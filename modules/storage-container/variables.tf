@@ -27,3 +27,14 @@ variable gcp_project_id {
   description = "ID of project on GCP where the cluster is created"
   type        = string
 }
+
+variable "bucket_versioning_enabled" {
+  default = true
+  type = bool
+}
+
+variable "bucket_storage_class" {
+  description = "(Optional, Default: 'STANDARD') The Storage Class of the new bucket. Supported values include: STANDARD, MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE."
+  default = "STANDARD"
+  type = bool
+}
