@@ -17,12 +17,6 @@ module "cluster" {
   source = "./modules/cluster"
 
   gcp_project_id = var.gcp_project_id
-  gcp_cluster_name = var.gcp_cluster_name
-  node_pool_name = var.node_pool_name
-  gcp_cluster_location = var.gcp_cluster_location
-  vpc_network_link = var.vpc_network_link
-  subnet_link = var.subnet_link
-  node_pool_disk_size = var.node_pool_disk_size
-  node_pool_autoscaling_min_node_count = var.node_pool_autoscaling_min_node_count
-  node_pool_autoscaling_max_node_count = var.node_pool_autoscaling_max_node_count
+  cluster = var.cluster
+  node_pools = var.node_pools
 }

@@ -26,7 +26,7 @@ resource "google_compute_subnetwork" "subnet" {
   project       = var.gcp_project_id
   name          = var.subnet_name
   ip_cidr_range = var.ip_cidr_range
-  region        = var.cloud_region
+  region        = var.gcp_region
   network       = google_compute_network.vpc_network.self_link
 }
 
@@ -36,6 +36,6 @@ resource "google_compute_subnetwork" "subnet" {
 resource "google_compute_address" "ip_address" {
   project = var.gcp_project_id
   name    = var.google_compute_address_name
-  region  = var.cloud_region
+  region  = var.gcp_region
 }
 

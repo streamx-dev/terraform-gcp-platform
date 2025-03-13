@@ -18,6 +18,12 @@ variable gcp_project_id {
   type        = string
 }
 
+variable "gcp_region" {
+  default     = "europe-central2"
+  description = "This string variable indicates the GCP region where your network resources will be located. The default value we have set is 'europe-central2'."
+  type = string
+}
+
 variable "network_name" {
   default = "streamx-network"
   description = "This string variable defines the name that will be used for the VPC network that Terraform will create. The name must adhere to RFC1035 and be 1 to 63 characters long."
@@ -27,13 +33,6 @@ variable "network_name" {
 variable "subnet_name" {
   default = "streamx-subnet"
   description = "This string variable defines the name that will be used for the subnet created by Terraform within the specified VPC network."
-  type = string
-}
-
-
-variable "cloud_region" {
-  default     = "europe-central2"
-  description = "This string variable indicates the GCP region where your network resources will be located. The default value we have set is 'europe-central2'."
   type = string
 }
 
