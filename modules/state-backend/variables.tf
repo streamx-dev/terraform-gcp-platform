@@ -21,17 +21,17 @@ variable "force_defaults_for_null_variables" {
 
 variable "bucket_name" {
   description = "(Optional, default: 'streamx_bucket') The name of the bucket."
-  default = "streamx_bucket"
-  type = string
+  default     = "streamx_bucket"
+  type        = string
 }
 
 variable "region" {
   description = "(Optional, default: 'EUROPE-CENTRAL2') The GCS location https://cloud.google.com/storage/docs/locations"
-  default = "EUROPE-CENTRAL2"
-  type = string
+  default     = "EUROPE-CENTRAL2"
+  type        = string
 }
 
-variable gcp_project_id {
+variable "gcp_project_id" {
   description = "This string variable represents the unique ID of your Google Cloud Platform (GCP) project. GCP uses this ID to identify your project in its system."
   type        = string
 }
@@ -43,11 +43,11 @@ variable "tf_backends" {
 
 variable "bucket_storage_class" {
   description = "(Optional, Default: 'STANDARD') The Storage Class of the new bucket. Supported values include: STANDARD, MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE."
-  default = "STANDARD"
-  type = string
+  default     = "STANDARD"
+  type        = string
 }
 
 variable "bucket_force_destroy" {
   default = false
-  type = bool
+  type    = bool
 }

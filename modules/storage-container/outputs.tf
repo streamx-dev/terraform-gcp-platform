@@ -15,6 +15,5 @@
 
 output "bucket_id" {
   description = "Created GCP bucket id"
-  value = google_storage_bucket.bucket.id
+  value       = google_storage_bucket.bucket.id
 }
-

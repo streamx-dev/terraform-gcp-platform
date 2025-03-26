@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
 output "endpoint" {
   description = "The IP address of this cluster's Kubernetes master."
   value       = google_container_cluster.cluster.endpoint

@@ -14,13 +14,13 @@
 #
 
 locals {
-  default_bucket_name                  = "streamx_bucket"
-  default_region                       = "EUROPE-CENTRAL2"
-  default_bucket_storage_class         = "STANDARD"
-  default_bucket_force_destroy         = false
+  default_bucket_name          = "streamx_bucket"
+  default_region               = "EUROPE-CENTRAL2"
+  default_bucket_storage_class = "STANDARD"
+  default_bucket_force_destroy = false
 
-  bucket_name = var.force_defaults_for_null_variables && var.bucket_name == null ? local.default_bucket_name : var.bucket_name
-  region = var.force_defaults_for_null_variables && var.region == null ? local.default_region : var.region
+  bucket_name          = var.force_defaults_for_null_variables && var.bucket_name == null ? local.default_bucket_name : var.bucket_name
+  region               = var.force_defaults_for_null_variables && var.region == null ? local.default_region : var.region
   bucket_storage_class = var.force_defaults_for_null_variables && var.bucket_storage_class == null ? local.default_bucket_storage_class : var.bucket_storage_class
   bucket_force_destroy = var.force_defaults_for_null_variables && var.bucket_force_destroy == null ? local.default_bucket_force_destroy : var.bucket_force_destroy
 }
@@ -44,7 +44,7 @@ locals {
       prefix = key
     })
   })
-  tf_backends_with_path = tomap({for k, v in var.tf_backends : k => v if v != null})
+  tf_backends_with_path = tomap({ for k, v in var.tf_backends : k => v if v != null })
 }
 
 resource "local_file" "tf_backend_file" {

@@ -21,31 +21,31 @@ variable "force_defaults_for_null_variables" {
 
 variable "bucket_name" {
   default = "terraform_state_streamx_bucket"
-  type = string
+  type    = string
 }
 
 variable "region" {
   default = "EUROPE-CENTRAL2"
-  type = string
+  type    = string
 }
 
-variable gcp_project_id {
+variable "gcp_project_id" {
   description = "ID of project on GCP where the cluster is created"
   type        = string
 }
 
 variable "bucket_versioning_enabled" {
   default = true
-  type = bool
+  type    = bool
 }
 
 variable "bucket_storage_class" {
   description = "(Optional, Default: 'STANDARD') The Storage Class of the new bucket. Supported values include: STANDARD, MULTI_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE."
-  default = "STANDARD"
-  type = string
+  default     = "STANDARD"
+  type        = string
 }
 
 variable "bucket_force_destroy" {
   default = false
-  type = bool
+  type    = bool
 }

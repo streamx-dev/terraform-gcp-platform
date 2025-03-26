@@ -19,19 +19,19 @@ variable "force_defaults_for_null_variables" {
   type        = bool
 }
 
-variable gcp_project_id {
+variable "gcp_project_id" {
   description = "ID of project on GCP where the cluster is created"
   type        = string
 }
 
 variable "gcp_cluster_name" {
-  default = "streamx"
+  default     = "streamx"
   description = "(Optional, default 'streamx') The name of the kubernetes cluster."
   type        = string
 }
 
 variable "node_pool_name" {
-  default = "streamx"
+  default     = "streamx"
   description = "(Optional, default 'streamx') The name node_pool for kubernetes cluster."
   type        = string
 }
@@ -43,37 +43,37 @@ variable "gcp_cluster_location" {
 }
 
 variable "vpc_network_link" {
-  default = null
+  default     = null
   description = "(Optional) Self_link of the Google Compute Engine network to which the cluster is connected."
-  type = string
+  type        = string
 }
 
 variable "subnet_link" {
-  default = null
+  default     = null
   description = "(Optional) The name or self_link of the Google Compute Engine subnetwork in which the cluster's instances are launched."
-  type = string
+  type        = string
 }
 
 variable "node_pool_disk_size" {
-  default = 200
+  default     = 200
   description = "(Optional, default 200) Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB"
-  type = number
+  type        = number
 }
 
 variable "node_pool_autoscaling_min_node_count" {
-  default = 1
+  default     = 1
   description = "(Optional, default 1) Minimum number of nodes in the NodePool. Must be >=0 and <= node_pool_autoscaling_min_node_count. Default value 1."
-  type = number
+  type        = number
 }
 
 variable "node_pool_autoscaling_max_node_count" {
-  default = 10
+  default     = 10
   description = "(Optional, default 10) Maximum number of nodes in the NodePool. Must be >= min_node_count. Default value 10."
-  type = number
+  type        = number
 }
 
 variable "node_pool_machine_type" {
-  default = "e2-standard-4"
+  default     = "e2-standard-4"
   description = "(Optional) The name of a Google Compute Engine machine type. The list of predefined machine types is available using the following command: gcloud compute machine-types list"
-  type = string
+  type        = string
 }

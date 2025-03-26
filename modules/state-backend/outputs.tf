@@ -13,10 +13,7 @@
 # limitations under the License.
 #
 
-
 output "tf_state_backend_config" {
   description = "The Terraform state backend configuration that is set up to utilize a bucket created by this module."
-  value = local.terraform_state_backend_config
+  value       = local.terraform_state_backend_config
 }
-
-
