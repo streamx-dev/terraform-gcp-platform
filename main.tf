@@ -13,16 +13,33 @@
 # limitations under the License.
 #
 
+locals {
+  default_gcp_cluster_name                    = "streamx"
+  default_node_pool_name                      = "streamx"
+  default_gcp_cluster_location                = "europe-central2-a"
+  default_node_pool_disk_size                 = 200
+  default_node_pool_autoscaling_min_node_count= 1
+  default_node_pool_autoscaling_max_node_count= 10
+  default_node_pool_machine_type              = "e2-standard-4"
+
+  gcp_cluster_name = var.force_defaults_for_null_variables && var.gcp_cluster_name == null ? local.default_gcp_cluster_name : var.gcp_cluster_name
+  node_pool_name = var.force_defaults_for_null_variables && var.node_pool_name == null ? local.default_node_pool_name : var.node_pool_name
+  gcp_cluster_location = var.force_defaults_for_null_variables && var.gcp_cluster_location == null ? local.default_gcp_cluster_location : var.gcp_cluster_location
+  node_pool_disk_size = var.force_defaults_for_null_variables && var.node_pool_disk_size == null ? local.default_node_pool_disk_size : var.node_pool_disk_size
+  node_pool_autoscaling_min_node_count = var.force_defaults_for_null_variables && var.node_pool_autoscaling_min_node_count == null ? local.default_node_pool_autoscaling_min_node_count : var.node_pool_autoscaling_min_node_count
+  node_pool_autoscaling_max_node_count = var.force_defaults_for_null_variables && var.node_pool_autoscaling_max_node_count == null ? local.default_node_pool_autoscaling_max_node_count : var.node_pool_autoscaling_max_node_count
+  node_pool_machine_type = var.force_defaults_for_null_variables && var.node_pool_machine_type == null ? local.default_node_pool_machine_type : var.node_pool_machine_type
+}
+
 module "cluster" {
   source = "./modules/cluster"
 
   gcp_project_id = var.gcp_project_id
-  gcp_cluster_name = var.gcp_cluster_name
-  node_pool_name = var.node_pool_name
-  gcp_cluster_location = var.gcp_cluster_location
-  vpc_network_link = var.vpc_network_link
-  subnet_link = var.subnet_link
-  node_pool_disk_size = var.node_pool_disk_size
-  node_pool_autoscaling_min_node_count = var.node_pool_autoscaling_min_node_count
-  node_pool_autoscaling_max_node_count = var.node_pool_autoscaling_max_node_count
+  gcp_cluster_name = local.gcp_cluster_name
+  node_pool_name = local.node_pool_name
+  gcp_cluster_location = local.gcp_cluster_location
+  node_pool_disk_size = local.node_pool_disk_size
+  node_pool_autoscaling_min_node_count = local.node_pool_autoscaling_min_node_count
+  node_pool_autoscaling_max_node_count = local.node_pool_autoscaling_max_node_count
+  node_pool_machine_type = local.node_pool_machine_type
 }

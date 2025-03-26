@@ -13,6 +13,12 @@
 # limitations under the License.
 #
 
+variable "force_defaults_for_null_variables" {
+  default     = true
+  description = "Enables forcing default variable values when the variable value passed to the module is null."
+  type        = bool
+}
+
 variable "bucket_name" {
   description = "(Optional, default: 'streamx_bucket') The name of the bucket."
   default = "streamx_bucket"

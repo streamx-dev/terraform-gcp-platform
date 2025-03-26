@@ -13,33 +13,20 @@
 # limitations under the License.
 #
 
+variable "force_defaults_for_null_variables" {
+  default     = true
+  description = "Enables forcing default variable values when the variable value passed to the module is null."
+  type        = bool
+}
+
 variable gcp_project_id {
   description = "This string variable represents the unique ID of your Google Cloud Platform (GCP) project. GCP uses this ID to identify your project in its system."
   type        = string
 }
 
-variable "network_name" {
-  default = "streamx-network"
-  description = "This string variable defines the name that will be used for the VPC network that Terraform will create. The name must adhere to RFC1035 and be 1 to 63 characters long."
-  type = string
-}
-
-variable "subnet_name" {
-  default = "streamx-subnet"
-  description = "This string variable defines the name that will be used for the subnet created by Terraform within the specified VPC network."
-  type = string
-}
-
-
 variable "cloud_region" {
   default     = "europe-central2"
   description = "This string variable indicates the GCP region where your network resources will be located. The default value we have set is 'europe-central2'."
-  type = string
-}
-
-variable "ip_cidr_range" {
-  default = "10.2.0.0/16"
-  description = "This string variable sets the IP range (CIDR notation) for the subnet. The default value is '10.2.0.0/16'"
   type = string
 }
 

@@ -13,29 +13,17 @@
 # limitations under the License.
 #
 
-########################################################################################
-#     Network
-########################################################################################
-resource "google_compute_network" "vpc_network" {
-  project                 = var.gcp_project_id
-  name                    = var.network_name
-  auto_create_subnetworks = false
+locals {
+  default_cloud_region                         = "europe-central2"
+  default_google_compute_address_name          = "streamx_ip_address"
+
+  cloud_region = var.force_defaults_for_null_variables && var.cloud_region == null ? local.default_cloud_region : var.cloud_region
+  google_compute_address_name = var.force_defaults_for_null_variables && var.google_compute_address_name == null ? local.default_google_compute_address_name : var.google_compute_address_name
 }
 
-resource "google_compute_subnetwork" "subnet" {
-  project       = var.gcp_project_id
-  name          = var.subnet_name
-  ip_cidr_range = var.ip_cidr_range
-  region        = var.cloud_region
-  network       = google_compute_network.vpc_network.self_link
-}
-
-########################################################################################
-#     Allocate Global IP
-########################################################################################
 resource "google_compute_address" "ip_address" {
   project = var.gcp_project_id
-  name    = var.google_compute_address_name
-  region  = var.cloud_region
+  name    = local.google_compute_address_name
+  region  = local.cloud_region
 }
 

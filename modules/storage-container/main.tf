@@ -13,17 +13,31 @@
 # limitations under the License.
 #
 
+locals {
+  default_bucket_name                = "terraform_state_streamx_bucket"
+  default_region                     = "EUROPE-CENTRAL2"
+  default_bucket_versioning_enabled  = true
+  default_bucket_storage_class       = "STANDARD"
+  default_bucket_force_destroy       = false
+
+  bucket_name = var.force_defaults_for_null_variables && var.bucket_name == null ? local.default_bucket_name : var.bucket_name
+  region = var.force_defaults_for_null_variables && var.region == null ? local.default_region : var.region
+  bucket_versioning_enabled = var.force_defaults_for_null_variables && var.bucket_versioning_enabled == null ? local.default_bucket_versioning_enabled : var.bucket_versioning_enabled
+  bucket_storage_class = var.force_defaults_for_null_variables && var.bucket_storage_class == null ? local.default_bucket_storage_class : var.bucket_storage_class
+  bucket_force_destroy = var.force_defaults_for_null_variables && var.bucket_force_destroy == null ? local.default_bucket_force_destroy : var.bucket_force_destroy
+}
+
 ########################################################################################
 #     Bucket
 ########################################################################################
 
 resource "google_storage_bucket" "bucket" {
-  name          = var.bucket_name
-  force_destroy = var.bucket_force_destroy
-  location      = var.region
-  storage_class = var.bucket_storage_class
+  name          = local.bucket_name
+  force_destroy = local.bucket_force_destroy
+  location      = local.region
+  storage_class = local.bucket_storage_class
   project       = var.gcp_project_id
   versioning {
-    enabled = var.bucket_versioning_enabled
+    enabled = local.bucket_versioning_enabled
   }
 }
