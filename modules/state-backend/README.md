@@ -3,7 +3,7 @@
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.8.1 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.0.0 |
 | <a name="requirement_google"></a> [google](#requirement\_google) | ~> 6.24.0 |
 
 ## Providers
@@ -33,7 +33,7 @@ No modules.
 | <a name="input_bucket_storage_class"></a> [bucket\_storage\_class](#input\_bucket\_storage\_class) | (Optional, Default: 'STANDARD') The Storage Class of the new bucket. Supported values include: STANDARD, MULTI\_REGIONAL, REGIONAL, NEARLINE, COLDLINE, ARCHIVE. | `string` | `"STANDARD"` | no |
 | <a name="input_force_defaults_for_null_variables"></a> [force\_defaults\_for\_null\_variables](#input\_force\_defaults\_for\_null\_variables) | Enables forcing default variable values when the variable value passed to the module is null. | `bool` | `true` | no |
 | <a name="input_gcp_project_id"></a> [gcp\_project\_id](#input\_gcp\_project\_id) | This string variable represents the unique ID of your Google Cloud Platform (GCP) project. GCP uses this ID to identify your project in its system. | `string` | n/a | yes |
-| <a name="input_region"></a> [region](#input\_region) | (Optional, default: 'EUROPE-CENTRAL2') The GCS location https://cloud.google.com/storage/docs/locations | `string` | `"EUROPE-CENTRAL2"` | no |
+| <a name="input_gcp_project_region"></a> [gcp\_project\_region](#input\_gcp\_project\_region) | (Optional, default: 'europe-central2') The GCS location https://cloud.google.com/storage/docs/locations | `string` | `"europe-central2"` | no |
 | <a name="input_tf_backends"></a> [tf\_backends](#input\_tf\_backends) | Terraform backends defined as map where key is state backend prefix and value is a path where backend configuration is created. | `map(string)` | n/a | yes |
 
 ## Outputs

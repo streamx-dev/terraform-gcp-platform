@@ -24,8 +24,8 @@ variable "bucket_name" {
   type    = string
 }
 
-variable "region" {
-  default = "EUROPE-CENTRAL2"
+variable "gcp_project_region" {
+  default = "europe-central2"
   type    = string
 }
 

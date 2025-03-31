@@ -14,15 +14,15 @@
 #
 
 locals {
-  default_cloud_region                = "europe-central2"
+  default_gcp_project_region          = "europe-central2"
   default_google_compute_address_name = "streamx_ip_address"
 
-  cloud_region                = var.force_defaults_for_null_variables && var.cloud_region == null ? local.default_cloud_region : var.cloud_region
+  gcp_project_region          = var.force_defaults_for_null_variables && var.gcp_project_region == null ? local.default_gcp_project_region : var.gcp_project_region
   google_compute_address_name = var.force_defaults_for_null_variables && var.google_compute_address_name == null ? local.default_google_compute_address_name : var.google_compute_address_name
 }
 
 resource "google_compute_address" "ip_address" {
   project = var.gcp_project_id
   name    = local.google_compute_address_name
-  region  = local.cloud_region
+  region  = local.gcp_project_region
 }
