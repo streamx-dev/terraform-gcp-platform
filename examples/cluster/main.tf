@@ -14,7 +14,8 @@
 #
 
 module "cluster" {
-  source = "./../../modules/cluster"
+  source  = "streamx-dev/platform/gcp"
+  version = "0.0.1"
 
   gcp_project_id      = var.gcp_project_id
   cluster_name        = var.cluster_name

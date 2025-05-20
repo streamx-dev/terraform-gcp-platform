@@ -14,7 +14,9 @@
 #
 
 module "network" {
-  source             = "./../../modules/network"
+  source  = "streamx-dev/platform/gcp"
+  version = "0.0.1"
+
   gcp_project_id     = var.gcp_project_id
   gcp_project_region = var.gcp_project_region
 }
