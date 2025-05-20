@@ -18,18 +18,6 @@ output "endpoint" {
   value       = google_container_cluster.cluster.endpoint
 }
 
-output "client_certificate" {
-  description = "Base64 encoded public certificate used by clients to authenticate to the cluster endpoint."
-  value       = google_container_cluster.cluster.master_auth.0.client_certificate
-  sensitive   = true
-}
-
-output "client_key" {
-  description = "Base64 encoded private key used by clients to authenticate to the cluster endpoint."
-  value       = google_container_cluster.cluster.master_auth.0.client_key
-  sensitive   = true
-}
-
 output "cluster_ca_certificate" {
   description = " Base64 encoded public certificate that is the root certificate of the cluster."
   value       = google_container_cluster.cluster.master_auth.0.cluster_ca_certificate

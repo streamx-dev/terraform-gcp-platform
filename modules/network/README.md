@@ -10,7 +10,7 @@
 
 | Name | Version |
 |------|---------|
-| <a name="provider_google"></a> [google](#provider\_google) | 5.26.0 |
+| <a name="provider_google"></a> [google](#provider\_google) | ~> 6.24.0 |
 
 ## Modules
 
@@ -28,7 +28,7 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_force_defaults_for_null_variables"></a> [force\_defaults\_for\_null\_variables](#input\_force\_defaults\_for\_null\_variables) | Enables forcing default variable values when the variable value passed to the module is null. | `bool` | `true` | no |
 | <a name="input_gcp_project_id"></a> [gcp\_project\_id](#input\_gcp\_project\_id) | This string variable represents the unique ID of your Google Cloud Platform (GCP) project. GCP uses this ID to identify your project in its system. | `string` | n/a | yes |
-| <a name="input_gcp_region"></a> [gcp\_project\_region](#input\_gcp\_project\_region) | This string variable indicates the GCP region where your network resources will be located. The default value we have set is 'europe-central2'. | `string` | `"europe-central2"` | no |
+| <a name="input_gcp_region"></a> [gcp\_region](#input\_gcp\_region) | This string variable indicates the GCP region where your network resources will be located. The default value we have set is 'europe-central2'. | `string` | `"europe-central2"` | no |
 | <a name="input_google_compute_address_name"></a> [google\_compute\_address\_name](#input\_google\_compute\_address\_name) | Name of the resource. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long | `string` | `"streamx-ip-address"` | no |
 
 ## Outputs
