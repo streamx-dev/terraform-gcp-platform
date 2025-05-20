@@ -35,3 +35,9 @@ output "cluster_ca_certificate" {
   value       = google_container_cluster.cluster.master_auth.0.cluster_ca_certificate
   sensitive   = true
 }
+
+output "kubeconfig" {
+  description = "K8s cluster kubeconfig"
+  value       = local.kubeconfig
+  sensitive   = true
+}

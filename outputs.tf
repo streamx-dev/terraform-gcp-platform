@@ -34,3 +34,9 @@ output "cluster_ca_certificate" {
   value       = module.cluster.cluster_ca_certificate
   sensitive   = true
 }
+
+output "kubeconfig" {
+  description = "K8s cluster kubeconfig"
+  value       = module.cluster.kubeconfig
+  sensitive   = true
+}

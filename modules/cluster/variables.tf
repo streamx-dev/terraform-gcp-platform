@@ -24,21 +24,33 @@ variable "gcp_project_id" {
   type        = string
 }
 
-variable "gcp_cluster_name" {
+variable "gcp_region" {
+  default     = "europe-west1"
+  description = "A valid GCP location (region or zone) in which the kubernetes cluster will be available."
+  type        = string
+}
+
+variable "cluster_name" {
   default     = "streamx"
   description = "The name of the kubernetes cluster."
   type        = string
 }
 
-variable "node_pool_name" {
-  default     = "streamx"
-  description = "The name node_pool for kubernetes cluster."
+variable "cluster_description" {
+  default     = null
+  description = "The description of the kubernetes cluster."
   type        = string
 }
 
-variable "gcp_cluster_location" {
-  default     = "europe-central2-a"
-  description = "A valid GCP location (region or zone) in which the kubernetes cluster will be available."
+variable "cluster_deletion_protection" {
+  default     = true
+  description = "Whether Terraform will be prevented from destroying the cluster. Deleting this cluster via terraform destroy or terraform apply will only succeed if this field is false in the Terraform state."
+  type        = bool
+}
+
+variable "node_pool_name" {
+  default     = "streamx"
+  description = "The name node_pool for kubernetes cluster."
   type        = string
 }
 
@@ -64,4 +76,9 @@ variable "node_pool_machine_type" {
   default     = "e2-standard-4"
   description = "(Optional) The name of a Google Compute Engine machine type. The list of predefined machine types is available using the following command: gcloud compute machine-types list"
   type        = string
+}
+
+variable "kubeconfig_path" {
+  default     = null
+  description = "Script creates kubeconfig file with provided path. No file is created when null is provided."
 }

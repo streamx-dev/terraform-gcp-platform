@@ -32,7 +32,7 @@ No modules.
 | <a name="input_bucket_versioning_enabled"></a> [bucket\_versioning\_enabled](#input\_bucket\_versioning\_enabled) | n/a | `bool` | `true` | no |
 | <a name="input_force_defaults_for_null_variables"></a> [force\_defaults\_for\_null\_variables](#input\_force\_defaults\_for\_null\_variables) | Enables forcing default variable values when the variable value passed to the module is null. | `bool` | `true` | no |
 | <a name="input_gcp_project_id"></a> [gcp\_project\_id](#input\_gcp\_project\_id) | ID of project on GCP where the cluster is created | `string` | n/a | yes |
-| <a name="input_gcp_project_region"></a> [gcp\_project\_region](#input\_gcp\_project\_region) | n/a | `string` | `"europe-central2"` | no |
+| <a name="input_gcp_region"></a> [gcp\_project\_region](#input\_gcp\_project\_region) | n/a | `string` | `"europe-central2"` | no |
 
 ## Outputs
 

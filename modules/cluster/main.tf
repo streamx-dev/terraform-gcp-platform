@@ -14,28 +14,64 @@
 #
 
 locals {
-  default_gcp_cluster_name                     = "streamx"
+  default_cluster_name                         = "streamx"
+  default_cluster_deletion_protection          = true
   default_node_pool_name                       = "streamx"
-  default_gcp_cluster_location                 = "europe-central2-a"
+  default_gcp_region                           = "europe-west1"
   default_node_pool_disk_size                  = 200
   default_node_pool_autoscaling_min_node_count = 1
   default_node_pool_autoscaling_max_node_count = 10
   default_node_pool_machine_type               = "e2-standard-4"
 
-  gcp_cluster_name                     = var.force_defaults_for_null_variables && var.gcp_cluster_name == null ? local.default_gcp_cluster_name : var.gcp_cluster_name
+  cluster_name                         = var.force_defaults_for_null_variables && var.cluster_name == null ? local.default_cluster_name : var.cluster_name
+  cluster_deletion_protection          = var.force_defaults_for_null_variables && var.cluster_deletion_protection ? local.default_cluster_deletion_protection : var.cluster_deletion_protection
   node_pool_name                       = var.force_defaults_for_null_variables && var.node_pool_name == null ? local.default_node_pool_name : var.node_pool_name
-  gcp_cluster_location                 = var.force_defaults_for_null_variables && var.gcp_cluster_location == null ? local.default_gcp_cluster_location : var.gcp_cluster_location
+  gcp_region                           = var.force_defaults_for_null_variables && var.gcp_region == null ? local.default_gcp_region : var.gcp_region
   node_pool_disk_size                  = var.force_defaults_for_null_variables && var.node_pool_disk_size == null ? local.default_node_pool_disk_size : var.node_pool_disk_size
   node_pool_autoscaling_min_node_count = var.force_defaults_for_null_variables && var.node_pool_autoscaling_min_node_count == null ? local.default_node_pool_autoscaling_min_node_count : var.node_pool_autoscaling_min_node_count
   node_pool_autoscaling_max_node_count = var.force_defaults_for_null_variables && var.node_pool_autoscaling_max_node_count == null ? local.default_node_pool_autoscaling_max_node_count : var.node_pool_autoscaling_max_node_count
   node_pool_machine_type               = var.force_defaults_for_null_variables && var.node_pool_machine_type == null ? local.default_node_pool_machine_type : var.node_pool_machine_type
+
+  kubeconfig = <<EOT
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: ${google_container_cluster.cluster.master_auth.0.cluster_ca_certificate}
+    server: https://${google_container_cluster.cluster.endpoint}
+  name: ${var.cluster_name}
+contexts:
+- context:
+    cluster: ${var.cluster_name}
+    user: ${var.cluster_name}
+  name: ${var.cluster_name}
+current-context: ${var.cluster_name}
+kind: Config
+preferences: {}
+users:
+- name: ${var.cluster_name}
+  user:
+    auth-provider:
+      config:
+        cmd-args: config config-helper --format=json
+        cmd-path: gcloud
+        expiry-key: '{.credential.token_expiry}'
+        token-key: '{.credential.access_token}'
+      name: gcp
+EOT
+}
+
+resource "local_sensitive_file" "kubeconfig" {
+  count    = var.kubeconfig_path == null ? 0 : 1
+  filename = var.kubeconfig_path
+  content  = local.kubeconfig
 }
 
 resource "google_container_cluster" "cluster" {
-  name                = local.gcp_cluster_name
+  name                = local.cluster_name
+  description         = var.cluster_description
   project             = var.gcp_project_id
-  location            = local.gcp_cluster_location
-  deletion_protection = false
+  location            = local.gcp_region
+  deletion_protection = local.cluster_deletion_protection
 
   remove_default_node_pool = true
   initial_node_count       = 1

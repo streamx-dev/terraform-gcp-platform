@@ -16,42 +16,9 @@
 module "cluster" {
   source = "./../../modules/cluster"
 
-  gcp_project_id       = var.gcp_project_id
-  gcp_cluster_name     = var.gcp_cluster_name
-  gcp_cluster_location = var.gcp_cluster_location
-  node_pool_disk_size  = 50
-}
-
-locals {
-  kubeconfig = <<EOT
-apiVersion: v1
-clusters:
-- cluster:
-    certificate-authority-data: ${module.cluster.cluster_ca_certificate}
-    server: https://${module.cluster.endpoint}
-  name: ${var.gcp_cluster_name}
-contexts:
-- context:
-    cluster: ${var.gcp_cluster_name}
-    user: ${var.gcp_cluster_name}
-  name: ${var.gcp_cluster_name}
-current-context: ${var.gcp_cluster_name}
-kind: Config
-preferences: {}
-users:
-- name: ${var.gcp_cluster_name}
-  user:
-    auth-provider:
-      config:
-        cmd-args: config config-helper --format=json
-        cmd-path: gcloud
-        expiry-key: '{.credential.token_expiry}'
-        token-key: '{.credential.access_token}'
-      name: gcp
-EOT
-}
-
-resource "local_sensitive_file" "kubeconfig" {
-  filename = "${path.module}/env/kubeconfig"
-  content  = local.kubeconfig
+  gcp_project_id      = var.gcp_project_id
+  cluster_name        = var.cluster_name
+  gcp_region          = var.gcp_region
+  node_pool_disk_size = 50
+  kubeconfig_path     = "${path.module}/env/kubeconfig"
 }

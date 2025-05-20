@@ -18,14 +18,14 @@ variable "gcp_project_id" {
   type        = string
 }
 
-variable "gcp_cluster_name" {
+variable "cluster_name" {
   default     = "streamx"
   description = "The name of the kubernetes cluster."
   type        = string
 }
 
-variable "gcp_cluster_location" {
-  default     = "europe-central2-a"
+variable "gcp_region" {
+  default     = "europe-west1"
   description = "A valid GCP location (region or zone) in which the kubernetes cluster will be available."
   type        = string
 }

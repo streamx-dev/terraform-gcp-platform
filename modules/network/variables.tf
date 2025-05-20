@@ -24,7 +24,7 @@ variable "gcp_project_id" {
   type        = string
 }
 
-variable "gcp_project_region" {
+variable "gcp_region" {
   default     = "europe-central2"
   description = "This string variable indicates the GCP region where your network resources will be located. The default value we have set is 'europe-central2'."
   type        = string

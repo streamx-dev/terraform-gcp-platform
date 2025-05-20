@@ -25,7 +25,7 @@ variable "bucket_name" {
   type        = string
 }
 
-variable "gcp_project_region" {
+variable "gcp_region" {
   description = "(Optional, default: 'europe-central2') The GCS location https://cloud.google.com/storage/docs/locations"
   default     = "europe-central2"
   type        = string

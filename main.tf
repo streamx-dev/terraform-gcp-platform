@@ -14,17 +14,19 @@
 #
 
 locals {
-  default_gcp_cluster_name                     = "streamx"
+  default_cluster_name                         = "streamx"
+  default_cluster_deletion_protection          = true
   default_node_pool_name                       = "streamx"
-  default_gcp_cluster_location                 = "europe-central2-a"
+  default_gcp_region                           = "europe-west1"
   default_node_pool_disk_size                  = 200
   default_node_pool_autoscaling_min_node_count = 1
   default_node_pool_autoscaling_max_node_count = 10
   default_node_pool_machine_type               = "e2-standard-4"
 
-  gcp_cluster_name                     = var.force_defaults_for_null_variables && var.gcp_cluster_name == null ? local.default_gcp_cluster_name : var.gcp_cluster_name
+  cluster_name                         = var.force_defaults_for_null_variables && var.cluster_name == null ? local.default_cluster_name : var.cluster_name
+  cluster_deletion_protection          = var.force_defaults_for_null_variables && var.cluster_deletion_protection == null ? local.default_cluster_deletion_protection : var.cluster_deletion_protection
   node_pool_name                       = var.force_defaults_for_null_variables && var.node_pool_name == null ? local.default_node_pool_name : var.node_pool_name
-  gcp_cluster_location                 = var.force_defaults_for_null_variables && var.gcp_cluster_location == null ? local.default_gcp_cluster_location : var.gcp_cluster_location
+  gcp_region                           = var.force_defaults_for_null_variables && var.gcp_region == null ? local.default_gcp_region : var.gcp_region
   node_pool_disk_size                  = var.force_defaults_for_null_variables && var.node_pool_disk_size == null ? local.default_node_pool_disk_size : var.node_pool_disk_size
   node_pool_autoscaling_min_node_count = var.force_defaults_for_null_variables && var.node_pool_autoscaling_min_node_count == null ? local.default_node_pool_autoscaling_min_node_count : var.node_pool_autoscaling_min_node_count
   node_pool_autoscaling_max_node_count = var.force_defaults_for_null_variables && var.node_pool_autoscaling_max_node_count == null ? local.default_node_pool_autoscaling_max_node_count : var.node_pool_autoscaling_max_node_count
@@ -35,11 +37,14 @@ module "cluster" {
   source = "./modules/cluster"
 
   gcp_project_id                       = var.gcp_project_id
-  gcp_cluster_name                     = local.gcp_cluster_name
+  cluster_name                         = local.cluster_name
+  cluster_description                  = var.cluster_description
+  cluster_deletion_protection          = local.cluster_deletion_protection
   node_pool_name                       = local.node_pool_name
-  gcp_cluster_location                 = local.gcp_cluster_location
+  gcp_region                           = local.gcp_region
   node_pool_disk_size                  = local.node_pool_disk_size
   node_pool_autoscaling_min_node_count = local.node_pool_autoscaling_min_node_count
   node_pool_autoscaling_max_node_count = local.node_pool_autoscaling_max_node_count
   node_pool_machine_type               = local.node_pool_machine_type
+  kubeconfig_path                      = var.kubeconfig_path
 }
